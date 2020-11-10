@@ -214,16 +214,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC22OrderPlaceWechatPaySDK14WechatExecutor")
 @interface WechatExecutor : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-+ (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
++ (void)application:(UIApplication * _Nonnull)application universalLink:(NSString * _Nonnull)universalLink didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
 @end
 
 @class NSDictionary;
 @class CallbackHandler;
+@class NSUserActivity;
 
 @interface WechatExecutor (SWIFT_EXTENSION(OrderPlaceWechatPaySDK)) <WeChatPayDelegate>
 - (void)wechatPayOrderWithBody:(NSDictionary * _Nonnull)body callback:(CallbackHandler * _Nullable)callback;
 - (void)wechatGetVersionWithCallback:(CallbackHandler * _Nullable)callback;
+- (void)isInstalledWithCallback:(CallbackHandler * _Nullable)callback;
 - (void)wechatApplicationOpenUrl:(UIApplication * _Nonnull)app url:(NSURL * _Nonnull)url;
+- (void)wechatApplication:(UIApplication * _Nonnull)app continue:(NSUserActivity * _Nonnull)userActivity;
 @end
 
 #if __has_attribute(external_source_symbol)
@@ -446,16 +449,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC22OrderPlaceWechatPaySDK14WechatExecutor")
 @interface WechatExecutor : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-+ (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
++ (void)application:(UIApplication * _Nonnull)application universalLink:(NSString * _Nonnull)universalLink didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
 @end
 
 @class NSDictionary;
 @class CallbackHandler;
+@class NSUserActivity;
 
 @interface WechatExecutor (SWIFT_EXTENSION(OrderPlaceWechatPaySDK)) <WeChatPayDelegate>
 - (void)wechatPayOrderWithBody:(NSDictionary * _Nonnull)body callback:(CallbackHandler * _Nullable)callback;
 - (void)wechatGetVersionWithCallback:(CallbackHandler * _Nullable)callback;
+- (void)isInstalledWithCallback:(CallbackHandler * _Nullable)callback;
 - (void)wechatApplicationOpenUrl:(UIApplication * _Nonnull)app url:(NSURL * _Nonnull)url;
+- (void)wechatApplication:(UIApplication * _Nonnull)app continue:(NSUserActivity * _Nonnull)userActivity;
 @end
 
 #if __has_attribute(external_source_symbol)

@@ -1,0 +1,19 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target arm64-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OrderPlaceWechatPaySDK
+import OrderPlaceSDK
+@_exported import OrderPlaceWechatPaySDK
+import Swift
+import UIKit
+@_inheritsConvenienceInitializers @objc public class WechatExecutor : ObjectiveC.NSObject {
+  @objc required override dynamic public init()
+  @objc public static func application(_ application: UIKit.UIApplication, universalLink: Swift.String, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?)
+  @objc deinit
+}
+extension WechatExecutor : OrderPlaceSDK.WeChatPayDelegate {
+  @objc dynamic public func wechatPayOrder(body: Foundation.NSDictionary, callback: OrderPlaceSDK.CallbackHandler?)
+  @objc dynamic public func wechatGetVersion(callback: OrderPlaceSDK.CallbackHandler?)
+  @objc dynamic public func isInstalled(callback: OrderPlaceSDK.CallbackHandler?)
+  @objc dynamic public func wechatApplicationOpenUrl(_ app: UIKit.UIApplication, url: Foundation.URL)
+  @objc dynamic public func wechatApplication(_ app: UIKit.UIApplication, continue userActivity: Foundation.NSUserActivity)
+}

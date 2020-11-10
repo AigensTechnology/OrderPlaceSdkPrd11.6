@@ -252,6 +252,7 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK10GpsService")
 @end
 
 @class UIViewController;
+@class NSUserActivity;
 
 SWIFT_CLASS("_TtC13OrderPlaceSDK10OrderPlace")
 @interface OrderPlace : NSObject
@@ -262,6 +263,7 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK10OrderPlace")
 + (void)checkCameraPermissionWithCallback:(void (^ _Nullable)(BOOL))callback;
 + (void)openSetting;
 + (void)application:(UIApplication * _Nonnull)app open:(NSURL * _Nonnull)url;
++ (void)application:(UIApplication * _Nonnull)app continue:(NSUserActivity * _Nonnull)userActivity;
 + (NSString * _Nullable)getImagePathWithNameWithName:(NSString * _Nonnull)name type:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -287,16 +289,12 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK19OrderViewController")
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptAlertPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(void))completionHandler;
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptConfirmPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptTextInputPanelWithPrompt:(NSString * _Nonnull)prompt defaultText:(NSString * _Nullable)defaultText initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(NSString * _Nullable))completionHandler;
-@property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
+@property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
-
-
-
-
 
 
 
@@ -305,6 +303,10 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK19OrderViewController")
 @interface OrderViewController (SWIFT_EXTENSION(OrderPlaceSDK)) <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 @end
+
+
+
+
 
 @class UINavigationController;
 
@@ -330,7 +332,9 @@ SWIFT_PROTOCOL("_TtP13OrderPlaceSDK17WeChatPayDelegate_")
 @protocol WeChatPayDelegate
 - (void)wechatPayOrderWithBody:(NSDictionary * _Nonnull)body callback:(CallbackHandler * _Nullable)callback;
 - (void)wechatGetVersionWithCallback:(CallbackHandler * _Nullable)callback;
+- (void)isInstalledWithCallback:(CallbackHandler * _Nullable)callback;
 - (void)wechatApplicationOpenUrl:(UIApplication * _Nonnull)app url:(NSURL * _Nonnull)url;
+- (void)wechatApplication:(UIApplication * _Nonnull)app continue:(NSUserActivity * _Nonnull)userActivity;
 @end
 
 
@@ -598,6 +602,7 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK10GpsService")
 @end
 
 @class UIViewController;
+@class NSUserActivity;
 
 SWIFT_CLASS("_TtC13OrderPlaceSDK10OrderPlace")
 @interface OrderPlace : NSObject
@@ -608,6 +613,7 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK10OrderPlace")
 + (void)checkCameraPermissionWithCallback:(void (^ _Nullable)(BOOL))callback;
 + (void)openSetting;
 + (void)application:(UIApplication * _Nonnull)app open:(NSURL * _Nonnull)url;
++ (void)application:(UIApplication * _Nonnull)app continue:(NSUserActivity * _Nonnull)userActivity;
 + (NSString * _Nullable)getImagePathWithNameWithName:(NSString * _Nonnull)name type:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -633,16 +639,12 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK19OrderViewController")
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptAlertPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(void))completionHandler;
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptConfirmPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptTextInputPanelWithPrompt:(NSString * _Nonnull)prompt defaultText:(NSString * _Nullable)defaultText initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(NSString * _Nullable))completionHandler;
-@property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
+@property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
-
-
-
-
 
 
 
@@ -651,6 +653,10 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK19OrderViewController")
 @interface OrderViewController (SWIFT_EXTENSION(OrderPlaceSDK)) <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 @end
+
+
+
+
 
 @class UINavigationController;
 
@@ -676,7 +682,9 @@ SWIFT_PROTOCOL("_TtP13OrderPlaceSDK17WeChatPayDelegate_")
 @protocol WeChatPayDelegate
 - (void)wechatPayOrderWithBody:(NSDictionary * _Nonnull)body callback:(CallbackHandler * _Nullable)callback;
 - (void)wechatGetVersionWithCallback:(CallbackHandler * _Nullable)callback;
+- (void)isInstalledWithCallback:(CallbackHandler * _Nullable)callback;
 - (void)wechatApplicationOpenUrl:(UIApplication * _Nonnull)app url:(NSURL * _Nonnull)url;
+- (void)wechatApplication:(UIApplication * _Nonnull)app continue:(NSUserActivity * _Nonnull)userActivity;
 @end
 
 

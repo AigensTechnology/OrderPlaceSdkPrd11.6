@@ -30,7 +30,7 @@ target 'YourProjectName' do
 
   use_frameworks!
 
-pod 'OrderPlaceSdkPrd11.6', '~> 0.4.0'
+pod 'OrderPlaceSdkPrd11.6', '~> 0.4.1'
 
 end
 
@@ -39,12 +39,12 @@ end
 * If you want the alipay feature,pls
 
 ```rb
-pod 'OrderPlaceSdkPrd11.6/Alipay', '~> 0.4.0'
+pod 'OrderPlaceSdkPrd11.6/Alipay', '~> 0.4.1'
 ```
 * If you want the wechat pay feature,pls
 
 ```rb
-pod 'OrderPlaceSdkPrd11.6/Wechat', '~> 0.4.0'
+pod 'OrderPlaceSdkPrd11.6/Wechat', '~> 0.4.1'
 ```
 
 ## Author
